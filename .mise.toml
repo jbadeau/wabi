@@ -1,0 +1,35 @@
+[plugins]
+helm      = 'https://github.com/Antiarchitect/asdf-helm'
+helmfile  = 'https://github.com/feniix/asdf-helmfile'
+kubectl   = 'https://github.com/asdf-community/asdf-kubectl'
+kubelogin = 'https://github.com/sechmann/asdf-kubelogin'
+rust      = 'https://github.com/asdf-community/asdf-rust'
+yarn      = 'https://github.com/twuni/asdf-yarn'
+
+[tools]
+helm      = '3.13.1'
+helmfile  = '0.158.0'
+kubectl   = '1.28.3'
+kubelogin = '0.0.29'
+nodejs    = '18.18.2'
+rust      = '1.77.0'
+yarn      = '1.22.19'
+
+[settings]
+experimental = true
+jobs = 1
+
+[tasks.pre]
+description = 'Install dependencies'
+run = """
+#!/usr/bin/env bash
+"""
+
+[tasks.post]
+description = 'Install dependencies'
+run = """
+#!/usr/bin/env bash
+helm plugin install https://github.com/jkroepke/helm-secrets --version v3.13.0
+helm plugin install https://github.com/chartmuseum/helm-push --version v0.10.3
+helm plugin install https://github.com/databus23/helm-diff --version v3.6.0
+"""
