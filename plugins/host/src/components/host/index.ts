@@ -1,0 +1,1 @@
+export { HostComponent } from './HostComponent';
